@@ -7,6 +7,7 @@ import { Section, CartData, CartDataRaw, CartMeta, DLRecord } from './types';
 
 class TTUpdate {
     private records: DLRecord = {};
+    public newCarts = 0;
     constructor() {
         TTUtil.mkdir(cfg.recDir);
         const recString = TTUtil.readFile(cfg.recDir + cfg.recFile);
@@ -86,6 +87,7 @@ class TTUpdate {
                     console.log('Downloading cart: ', cd.name);
                     await TTUtil.downloadFile(url, dir + '/' + cd.filename, true, false);
                     this.recDL(cd);
+                    this.newCarts++;
                 }
                 else {
                     console.log('Cart exists: ' + cd.name);
@@ -159,7 +161,6 @@ class TTUpdate {
             }
         }
         fs.writeFileSync(cfg.recDir + '/' + cfg.metaFile, JSON.stringify(meta, null, 2));
-        console.log('Write meta!');
     }
 }
 

@@ -7,7 +7,7 @@ type Count = {[key:string]: number};
 class TTAnalytics {
     static metaRaw = TTUtil.readFile(cfg.recDir + cfg.metaFile);
     static meta = JSON.parse(this.metaRaw) as CartMeta[];
-    static analyze() {
+    static analyze(): void {
         let langs: Count = {};
         let authors: Count = {};
         for (let item of this.meta){
@@ -20,6 +20,13 @@ class TTAnalytics {
         console.log(langs);
         // console.log('Authors:');
         // console.log(JSON.stringify(authors, null, 2));
+    }
+    static maxID(): number {
+        let res = 0;
+        for (let item of this.meta){
+            res = item.id > res ? item.id : res;
+        }
+        return res;
     }
 }
 
