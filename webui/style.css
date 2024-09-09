@@ -1,0 +1,46 @@
+:root {
+    --bg: #32384c;
+    --accent: #3e5564;
+    --light: #92abbb;
+    --bright: #4ea8ea;
+}
+* {
+    font-family: monospace;
+}
+body {
+    background: var(--bg);
+    color:white;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+button {
+    background-color: var(--light);
+    margin-right: 0.25rem;
+    cursor: pointer;
+}
+h1 {
+    margin-top: 1rem;
+}
+.tic-icon {
+    height:1.75rem;
+}
+.top-btn {
+    color: var(--bright);
+    cursor: pointer;
+}
+.listing-item {
+    background: var(--accent);
+    background-image: linear-gradient(to right, var(--accent) , var(--bg));
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.listing-title {
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.listing-info {
+    color: var(--light);
+}
+.listing-desc {
+    font-style: italic;
+}

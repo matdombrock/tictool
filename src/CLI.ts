@@ -6,9 +6,13 @@ import Analytics from "./Analytics";
 import Update from "./Update";
 import Search, { SearchResult, SearchOptions } from "./Search";
 import cfg from "./cfg";
+import Util from "./Util";
+import { CartMeta } from "./types";
 
 class CLI {
     private program = new Command();
+    private metaRaw = Util.readFile(cfg.recDir + cfg.metaFile);
+    private meta = JSON.parse(this.metaRaw) as CartMeta[];
     constructor() {
         console.log(`
 ___________.__     ___________           .__   
@@ -57,28 +61,28 @@ ___________.__     ___________           .__
             .option('-c, --section <section>', 'Filter for the given section/category')
             .description('Search the downloads and meta data')
             .action((query: string, options: SearchOptions) => {
-                Search.search(query, options, true);
+                Search.search(this.meta, query, options, true);
             });
 
         this.program
             .command('script <lang>')
             .description('List files written in the given (programming) language')
             .action((query: string) => {
-                Search.script(query, true);
+                Search.script(this.meta, query, true);
             });
 
         this.program
             .command('id <id>')
             .description('Show file with the given ID')
             .action((query: string) => {
-                Search.id(query, true);
+                Search.id(this.meta, query, true);
             });
 
         this.program
             .command('author <name>')
             .description('List files with the given author name')
             .action((query: string) => {
-                Search.author(query, true);
+                Search.author(this.meta, query, true);
             });
             
         this.program
@@ -103,7 +107,7 @@ ___________.__     ___________           .__
             });
     };
     private play(id: string): void {
-        const res: SearchResult = Search.id(id)[0];
+        const res: SearchResult = Search.id(this.meta, id)[0];
         const start = 'tic80 --fs=' + cfg.dlDir + res.cartMeta.section + ' --cmd="load ' + res.cartMeta.filename + ' & run"';
         console.log(start);
         ChildProcess.exec(start);

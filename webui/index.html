@@ -1,8 +1,44 @@
-hello world
-
-<style>
-    body {
-        background: black;
-        color:white;
-    }
-</style>
+<html>
+    <head>
+        <title>TicTool - Search</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <h1><img src="favicon.png" class="tic-icon"> TicTool - Search</h1>
+    The unofficial TIC80.com search tool!
+    <hr/>
+    <span class="top-btn"id="aboutBtn">about</span> | 
+    <span class="top-btn" id="analyticsBtn">analytics</span> | 
+    <span class="top-btn" id="randomBtn">random</span>
+    <br/><br/>
+    <input type="text" id="query" placeholder="Filter Query">
+    <select id="script">
+        <option value="">Any</option>
+        <option value="lua">Lua</option>
+        <option value="ruby">Ruby</option>
+        <option value="js">JS</option>
+        <option value="moon">Moon</option>
+        <option value="fennel">Fennel</option>
+        <option value="squirrel">Squirrel</option>
+        <option value="Wren">Wren</option>
+        <option value="wasm">WASM</option>
+        <option value="janet">Janet</option>
+        <option value="scheme">Scheme</option>
+        <option value="python">Python</option>
+    </select>
+    <select id="section">
+        <option value="">Any</option>
+        <option value="Games">Games</option>
+        <option value="Tech">Tech</option> 
+        <option value="Tools">Tools</option>
+        <option value="Music">Music</option>
+        <option value="WIP">WIP</option>
+        <option value="Demoscene">Demoscene</option>
+        <option value="Livecoding">Livecoding</option>
+    </select>
+    <button id="searchBtn">//Search</button>
+    <br/><br/>
+    <div id="results">Searching...</div>
+    <hr/>
+    <div>Mathieu Dombrock (Replicat) 2024 - GPL3</div>
+    <script src="bundle.js"></script>
+</html>

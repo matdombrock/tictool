@@ -1,6 +1,6 @@
 import { CartMeta } from "./types";
-import Util from "./Util";
-import cfg from "./cfg";
+// import Util from "./Util";
+// import cfg from "./cfg";
 
 export type SearchResult = {
     cartMeta: CartMeta;
@@ -12,8 +12,8 @@ export type SearchOptions = {
 };
 
 class Search {
-    private static metaRaw = Util.readFile(cfg.recDir + cfg.metaFile);
-    private static meta = JSON.parse(this.metaRaw) as CartMeta[];
+    // private static metaRaw = Util.readFile(cfg.recDir + cfg.metaFile);
+    // private static meta = JSON.parse(this.metaRaw) as CartMeta[];
     private static print(res: SearchResult[]): void {
         for (let item of res) {
             console.log();
@@ -28,9 +28,9 @@ class Search {
         console.log();
         console.log('Found: ', res.length);
     }
-    static id(query: string, print: boolean = false): SearchResult[] {
+    static id(meta: CartMeta[], query: string, print: boolean = false): SearchResult[] {
         let res: SearchResult[] = [];
-        for (let item of this.meta){
+        for (let item of meta){
             if(item.id.toString() === query) {
                 res.push({cartMeta: item, points: 5});
             }
@@ -38,9 +38,9 @@ class Search {
         if (print) this.print(res);
         return res;
     }
-    static author(query: string, print: boolean = false): SearchResult[] {
+    static author(meta: CartMeta[], query: string, print: boolean = false): SearchResult[] {
         let res: SearchResult[] = [];
-        for (let item of this.meta){
+        for (let item of meta){
             if (item.author.includes(query.toLowerCase()) || query.includes(item.author.toLowerCase())) {
                 res.push({cartMeta: item, points: 5});
             }
@@ -48,9 +48,9 @@ class Search {
         if (print) this.print(res);
         return res;
     }
-    static script(query: string, print: boolean = false): SearchResult[] {
+    static script(meta: CartMeta[], query: string, print: boolean = false): SearchResult[] {
         let res: SearchResult[] = [];
-        for (let item of this.meta){
+        for (let item of meta){
             let points = 0;
             if (item.script.includes(query.toLowerCase()) || query.includes(item.script.toLowerCase())) {
                 points += 5;
@@ -62,9 +62,9 @@ class Search {
         if (print) this.print(res);
         return res;
     }
-    static search(query: string, options: SearchOptions, print: boolean = false): SearchResult[]  {
+    static search(meta: CartMeta[], query: string, options: SearchOptions, print: boolean = false): SearchResult[]  {
         let res: SearchResult[] = [];
-        for (let item of this.meta){
+        for (let item of meta){
             let points = 0;
             query = query.toLowerCase();
             if (options.script) {
