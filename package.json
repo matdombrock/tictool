@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "cli": "tsc && node ./dist/CLI",
+    "api": "tsc && node ./dist/API",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,9 +12,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/express": "^4.17.21",
     "@types/node": "^22.5.4",
     "axios": "^1.7.7",
     "commander": "^12.1.0",
+    "express": "^4.19.2",
     "jsonrepair": "^3.8.0",
     "typescript": "^5.5.4"
   }
