@@ -1,16 +1,16 @@
 import fs from 'fs';
 
-import TTUtil from './TTUtil';
+import Util from './Util';
 import cfg from './cfg';
 
 import { Section, CartData, CartDataRaw, CartMeta, DLRecord } from './types';
 
-class TTUpdate {
+class Update {
     private records: DLRecord = {};
     public newCarts = 0;
     constructor() {
-        TTUtil.mkdir(cfg.recDir);
-        const recString = TTUtil.readFile(cfg.recDir + cfg.recFile);
+        Util.mkdir(cfg.recDir);
+        const recString = Util.readFile(cfg.recDir + cfg.recFile);
         if (recString) {
             this.records = JSON.parse(recString) as DLRecord;
             console.log('Loaded records...');
@@ -50,7 +50,7 @@ class TTUpdate {
         fs.writeFileSync(cfg.recDir + cfg.recFile, JSON.stringify(this.records, null, 2));
     }
     private readListing(section: Section): CartDataRaw[] {
-        const file = TTUtil.readFile(cfg.listingDir + section + '.json');
+        const file = Util.readFile(cfg.listingDir + section + '.json');
         if (!file || file === '') throw new Error('Cant read listing');
         const parsed = JSON.parse(file);
         console.log(typeof JSON.parse(file));
@@ -58,11 +58,11 @@ class TTUpdate {
         return parsed.files as CartDataRaw[];
     }
     async getListings(): Promise<void> {
-        TTUtil.mkdir(cfg.listingDir);
+        Util.mkdir(cfg.listingDir);
         for (let section of cfg.listingSections) {
             const url = cfg.apiUrl + 'json?fn=dir&path=Play/' + section;
             const outputPath = cfg.listingDir + section + '.json';
-            await TTUtil.downloadFile(url, outputPath, false, true);
+            await Util.downloadFile(url, outputPath, false, true);
         }
         fs.writeFileSync(cfg.listingDir + '/_timestamp', Date.now().toString());
     }
@@ -81,11 +81,11 @@ class TTUpdate {
                     id: cart.id
                 }
                 const dir = cfg.dlDir + cd.section;
-                TTUtil.mkdir(dir);
+                Util.mkdir(dir);
                 if (this.checkDL(cd)) {
                     const url = cfg.apiUrl + 'cart/' + cd.hash + '/' + cd.filename;
                     console.log('Downloading cart: ', cd.name);
-                    await TTUtil.downloadFile(url, dir + '/' + cd.filename, true, false);
+                    await Util.downloadFile(url, dir + '/' + cd.filename, true, false);
                     this.recDL(cd);
                     this.newCarts++;
                 }
@@ -122,20 +122,25 @@ class TTUpdate {
                 if (rec === null) {
                     throw new Error('Cant find dl record for ' + file);
                 }
-                const contents = TTUtil.readFile(sectionPath + '/' + file);
+                const contents = Util.readFile(sectionPath + '/' + file);
+                const stats = fs.statSync(sectionPath + '/' + file);
                 // Split the file contents into an array of lines
                 const lines = contents.split('\n');
                 let cartMeta: CartMeta = {
                     name: rec.name,
                     author: 'unknown',
-                    script: 'unknown',
+                    script: 'lua',// lua is the default script
                     desc: 'unknown',
                     id: rec.id,
                     section: rec.section,
                     hash: rec.hash,
-                    filename: rec.filename
+                    filename: rec.filename,
+                    size: stats.size,
+                    mtime: stats.mtime,
+                    ctime: stats.ctime
                 };
-                for (const line of lines) {
+                for (let line of lines) {
+                    line = line.toLowerCase();
                     if (line.includes('script:')) {
                         if (line.includes('lua')) cartMeta.script = 'lua';
                         if (line.includes('ruby')) cartMeta.script = 'ruby';
@@ -161,8 +166,9 @@ class TTUpdate {
             }
         }
         fs.writeFileSync(cfg.recDir + '/' + cfg.metaFile, JSON.stringify(meta, null, 2));
+        console.log('Wrote metadata for ' + meta.length + ' carts!');
     }
 }
 
-export default TTUpdate;
+export default Update;
 

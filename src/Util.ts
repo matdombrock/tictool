@@ -5,7 +5,7 @@ import path from 'path';
 import axios from 'axios';
 import { jsonrepair } from 'jsonrepair';
 
-class TTUtil {
+class Util {
     constructor(){};
     static mkdir(dir: string): void {
         if (!fs.existsSync(dir)) {
@@ -50,4 +50,4 @@ class TTUtil {
     }
 }
 
-export default TTUtil;
+export default Util;

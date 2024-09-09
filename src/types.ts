@@ -24,6 +24,9 @@ export type CartMeta = {
     hash: string;
     id: number;
     filename: string;
+    size: number;
+    mtime: Date;
+    ctime: Date;
 };
 
 export type DLRecord = {

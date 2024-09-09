@@ -1,16 +1,20 @@
 import { CartMeta } from "./types";
-import TTUtil from "./TTUtil";
+import Util from "./Util";
 import cfg from "./cfg";
 
 export type SearchResult = {
     cartMeta: CartMeta;
     points: number;
 };
+export type SearchOptions = {
+    script: string;
+    section: string;
+};
 
-class TTSearch {
-    static metaRaw = TTUtil.readFile(cfg.recDir + cfg.metaFile);
-    static meta = JSON.parse(this.metaRaw) as CartMeta[];
-    static print(res: SearchResult[]): void {
+class Search {
+    private static metaRaw = Util.readFile(cfg.recDir + cfg.metaFile);
+    private static meta = JSON.parse(this.metaRaw) as CartMeta[];
+    private static print(res: SearchResult[]): void {
         for (let item of res) {
             console.log();
             console.log(item.cartMeta.name.replace('.tic', ''));
@@ -58,11 +62,17 @@ class TTSearch {
         if (print) this.print(res);
         return res;
     }
-    static search(query: string, print: boolean = false): SearchResult[]  {
+    static search(query: string, options: SearchOptions, print: boolean = false): SearchResult[]  {
         let res: SearchResult[] = [];
         for (let item of this.meta){
             let points = 0;
             query = query.toLowerCase();
+            if (options.script) {
+                if (item.script.toLowerCase() !== options.script.toLowerCase()) continue;
+            }
+            if (options.section) {
+                if (item.section.toLowerCase() !== options.section.toLowerCase()) continue;
+            } 
             if (item.name.includes(query) || query.includes(item.name.toLowerCase())) {
                 points += 5;
             }
@@ -83,7 +93,10 @@ class TTSearch {
             }
         }
         if (print) this.print(res);
+        console.log('Query: '+query);
+        console.log('Options: ');
+        console.log(options);
         return res;
     }
 }
-export default TTSearch;
+export default Search;

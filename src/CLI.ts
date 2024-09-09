@@ -2,13 +2,12 @@ import * as ChildProcess from "child_process";
 
 const { Command } = require('commander');
 
-import TTAnalytics from "./TTAnalytics";
-import TTUpdate from "./TTUpdate";
-import TTSearch, { SearchResult } from "./TTSearch";
+import Analytics from "./Analytics";
+import Update from "./Update";
+import Search, { SearchResult, SearchOptions } from "./Search";
 import cfg from "./cfg";
 
-
-class TTCLI {
+class CLI {
     private program = new Command();
     constructor() {
         console.log(`
@@ -54,30 +53,32 @@ ___________.__     ___________           .__
 
         this.program
             .command('search <query>')
+            .option('-s, --script <lang>', 'Filter for the given language')
+            .option('-c, --section <section>', 'Filter for the given section/category')
             .description('Search the downloads and meta data')
-            .action((query: string) => {
-                TTSearch.search(query, true);
+            .action((query: string, options: SearchOptions) => {
+                Search.search(query, options, true);
             });
 
         this.program
             .command('script <lang>')
             .description('List files written in the given (programming) language')
             .action((query: string) => {
-                TTSearch.script(query, true);
+                Search.script(query, true);
             });
 
         this.program
             .command('id <id>')
-            .description('List files with the given ID')
+            .description('Show file with the given ID')
             .action((query: string) => {
-                TTSearch.id(query, true);
+                Search.id(query, true);
             });
 
         this.program
             .command('author <name>')
             .description('List files with the given author name')
             .action((query: string) => {
-                TTSearch.author(query, true);
+                Search.author(query, true);
             });
             
         this.program
@@ -91,24 +92,24 @@ ___________.__     ___________           .__
             .command('max-id')
             .description('Calculate the maximum id')
             .action(() => {
-                console.log('Max ID: ' + TTAnalytics.maxID());
+                console.log('Max ID: ' + Analytics.maxID());
             });
 
         this.program
             .command('analytics')
             .description('Show a meta analysis of files')
             .action(() => {
-                TTAnalytics.analyze();
+                this.analytics();
             });
     };
     private play(id: string): void {
-        const res: SearchResult = TTSearch.id(id)[0];
+        const res: SearchResult = Search.id(id)[0];
         const start = 'tic80 --fs=' + cfg.dlDir + res.cartMeta.section + ' --cmd="load ' + res.cartMeta.filename + ' & run"';
         console.log(start);
         ChildProcess.exec(start);
     }
     private random(): void {
-        const id = Math.floor(Math.random() * TTAnalytics.maxID());
+        const id = Math.floor(Math.random() * Analytics.maxID());
         console.log('Random ID: ' + id);
         this.play(id.toString());
     }
@@ -117,13 +118,30 @@ ___________.__     ___________           .__
         console.log(start);
         ChildProcess.exec(start);
     }
+    private analytics(): void {
+        const ana = Analytics.analyze();
+        console.log('Overall language usage:');
+        console.log(ana.langs);
+        console.log();
+        console.log('Language usage by section:');
+        console.log(JSON.stringify(ana.sectionLangs, null, 2));
+        console.log();
+        console.log('Section counts:');
+        console.log(ana.sections);
+        console.log();
+        console.log('Cart count: ', ana.cartCount);
+        console.log('Total cart size: ');
+        console.log(ana.totalSize + ' bytes');
+        console.log('Average cart size: ');
+        console.log((ana.totalSize / ana.cartCount).toFixed(0) + ' bytes');
+    }
     private openWeb(id: string): void {
         const url = 'https://tic80.com/play?cart=' + id;
         const start = (process.platform == 'darwin' ? 'open' : process.platform == 'win32' ? 'start' : 'xdg-open');
         ChildProcess.exec(start + ' ' + url);
     }
     private async update(): Promise<void> {
-        const mn = new TTUpdate();
+        const mn = new Update();
         // await mn.getListings();
         await mn.getCarts();
         mn.generateMeta();
@@ -134,4 +152,4 @@ ___________.__     ___________           .__
     }
 }
 
-new TTCLI().run();
+new CLI().run();

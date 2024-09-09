@@ -1,6 +1,9 @@
 # TicTool
 A collection of utilities for the [TIC-80](https://tic80.com) fantasy console. 
 
+## Cart Catalog
+**This repo contains most (if not all) TIC-80 carts which have been uploaded to [TIC-80.com](https://tic80.com). The authors of these carts have not given permission to redistribute these carts. These are here for research/indexing purposes only. Please visit [TIC-80.com](https://tic80.com) to download the carts from their original source.** 
+
 ## CLI
 ```
 ___________.__     ___________           .__   
