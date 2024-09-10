@@ -676,6 +676,19 @@
     "ctime": "2024-09-05T08:47:43.552Z"
   },
   {
+    "name": "ADOFAI Demake.tic",
+    "author": "sirwobb79 (@admiralerkal79 via discord)",
+    "script": "lua",
+    "desc": "adofai demake in tic-80",
+    "id": 3996,
+    "section": "Games",
+    "hash": "9617bcdcabaa04755f0f5bb8cf082b82",
+    "filename": "adofai_demake.tic",
+    "size": 39104,
+    "mtime": "2024-09-10T07:17:34.963Z",
+    "ctime": "2024-09-10T07:17:34.963Z"
+  },
+  {
     "name": "Air Hockey.tic",
     "author": "developer from onj",
     "script": "lua",
@@ -5889,6 +5902,19 @@
     "ctime": "2024-09-05T08:48:23.447Z"
   },
   {
+    "name": "juggle pong.tic",
+    "author": "anescient",
+    "script": "python",
+    "desc": "single player gravity pong",
+    "id": 4003,
+    "section": "Games",
+    "hash": "e9bf45f8a416ff6c0fc5322af4d4324b",
+    "filename": "juggle_pong.tic",
+    "size": 21273,
+    "mtime": "2024-09-10T07:17:34.748Z",
+    "ctime": "2024-09-10T07:17:34.748Z"
+  },
+  {
     "name": "Jump Pac.tic",
     "author": "lostcadesoft by bgelais",
     "script": "lua",
@@ -7733,6 +7759,19 @@
     "size": 93755,
     "mtime": "2024-09-05T08:47:19.144Z",
     "ctime": "2024-09-05T08:47:19.144Z"
+  },
+  {
+    "name": "Oort cloud crossing.tic",
+    "author": "altamarino",
+    "script": "lua",
+    "desc": "destroy and survive",
+    "id": 4002,
+    "section": "Games",
+    "hash": "6b2ad8d7be08602b803aa262633b698f",
+    "filename": "oort_cloud_crossing.tic",
+    "size": 31805,
+    "mtime": "2024-09-10T07:17:35.505Z",
+    "ctime": "2024-09-10T07:17:35.505Z"
   },
   {
     "name": "Open Door.tic",
@@ -10504,6 +10543,19 @@
     "ctime": "2024-09-05T08:46:14.632Z"
   },
   {
+    "name": "Speed Train - Long Track.tic",
+    "author": "sirwobb79 (@admiralerkal79 via discord)",
+    "script": "lua",
+    "desc": "drive a train and collect money at stations",
+    "id": 3882,
+    "section": "Games",
+    "hash": "b6e5e40c2863fd0761e0dd9fa4d6f52b",
+    "filename": "speed_train_long_track.tic",
+    "size": 80712,
+    "mtime": "2024-09-10T07:17:33.665Z",
+    "ctime": "2024-09-10T07:17:33.665Z"
+  },
+  {
     "name": "Spilljackers.tic",
     "author": "emmabukacek / technomancy",
     "script": "fennel",
@@ -12330,11 +12382,11 @@
     "desc": "minesweeper clone",
     "id": 3994,
     "section": "Games",
-    "hash": "2b60175a945af9e213ee8077b443aa28",
+    "hash": "9fba2a2d8c681292a4c991a701f7febf",
     "filename": "ticsweeper.tic",
-    "size": 29600,
-    "mtime": "2024-09-05T08:48:47.017Z",
-    "ctime": "2024-09-05T08:48:47.017Z"
+    "size": 30294,
+    "mtime": "2024-09-10T07:17:34.212Z",
+    "ctime": "2024-09-10T07:17:34.212Z"
   },
   {
     "name": "tictag.tic",
@@ -16079,6 +16131,19 @@
     "size": 23183,
     "mtime": "2024-09-05T09:47:15.787Z",
     "ctime": "2024-09-05T09:47:15.787Z"
+  },
+  {
+    "name": "clown box sword.tic",
+    "author": "potato imaginator",
+    "script": "lua",
+    "desc": "clown box sword for swordtember 2024",
+    "id": 4000,
+    "section": "Tech",
+    "hash": "cbaa6f0ca912397f134b901798ccb0ed",
+    "filename": "clown_box_sword.tic",
+    "size": 18637,
+    "mtime": "2024-09-10T07:17:36.238Z",
+    "ctime": "2024-09-10T07:17:36.238Z"
   },
   {
     "name": "cls demo / lua.tic",
@@ -20215,13 +20280,13 @@
     "ctime": "2024-09-05T09:45:53.661Z"
   },
   {
-    "name": "Metaballs.tic",
+    "name": "metaballs.tic",
     "author": "phoebe",
     "script": "lua",
     "desc": "i made some metaballs",
-    "id": 2784,
-    "section": "Tech",
-    "hash": "4ac3a59fa3d42d391e1bd49f3e05a651",
+    "id": 4001,
+    "section": "Demoscene",
+    "hash": "999771c90f0ff08ce5217c330b6bf9f3",
     "filename": "metaballs.tic",
     "size": 11458,
     "mtime": "2024-09-05T09:47:17.321Z",
@@ -28242,11 +28307,11 @@
     "desc": "generate (nearly) infinite palettes",
     "id": 3936,
     "section": "Tools",
-    "hash": "1fb569e97b35b6b6e58163384e1d5f17",
+    "hash": "ee01ee22d955035dd934ed7a4eebaf73",
     "filename": "infinite_palettes.tic",
-    "size": 37702,
-    "mtime": "2024-09-05T09:49:18.471Z",
-    "ctime": "2024-09-05T09:49:18.471Z"
+    "size": 37677,
+    "mtime": "2024-09-10T07:17:36.964Z",
+    "ctime": "2024-09-10T07:17:36.964Z"
   },
   {
     "name": "Input reader.tic",
@@ -32986,8 +33051,8 @@
     "script": "lua",
     "desc": "adofai demake in tic-80",
     "id": 3996,
-    "section": "WIP",
-    "hash": "7faaf09b6d57dc8873e964f2fc6dc90f",
+    "section": "Games",
+    "hash": "9617bcdcabaa04755f0f5bb8cf082b82",
     "filename": "adofai_demake.tic",
     "size": 23060,
     "mtime": "2024-09-05T09:52:20.156Z",
@@ -39759,8 +39824,8 @@
     "script": "lua",
     "desc": "drive a train and collect money at stations",
     "id": 3882,
-    "section": "WIP",
-    "hash": "6facd29f959a67578d436626c7846891",
+    "section": "Games",
+    "hash": "b6e5e40c2863fd0761e0dd9fa4d6f52b",
     "filename": "speed_train_long_track.tic",
     "size": 80530,
     "mtime": "2024-09-05T09:51:23.241Z",
@@ -43899,6 +43964,19 @@
     "size": 30883,
     "mtime": "2024-09-05T09:52:30.702Z",
     "ctime": "2024-09-05T09:52:30.702Z"
+  },
+  {
+    "name": "metaballs.tic",
+    "author": "abcq2",
+    "script": "lua",
+    "desc": "metaballs",
+    "id": 4001,
+    "section": "Demoscene",
+    "hash": "999771c90f0ff08ce5217c330b6bf9f3",
+    "filename": "metaballs.tic",
+    "size": 19101,
+    "mtime": "2024-09-10T07:17:37.574Z",
+    "ctime": "2024-09-10T07:17:37.574Z"
   },
   {
     "name": "Metropolis &#39;80.tic",

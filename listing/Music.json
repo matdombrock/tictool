@@ -26,8 +26,8 @@
 		{ "name": "TH4 - Bad Apple!!.tic", "hash": "9cb58c9aeccef4ede026e51dcdad04f6", "id": 447, "filename": "th4_bad_apple.tic"}, 
 		{ "name": "UNDERTALE - Song That Might Play When You Fight Sans.tic", "hash": "8af9f95d686088cacf245f4aa0cc132f", "id": 680, "filename": "undertale_song_that_might_play_when_you_fight_sans.tic"}, 
 		{ "name": "Rick Astley - Never gonna give you up.tic", "hash": "e8194cd62442b312b14947bf693e928f", "id": 3387, "filename": "rick_astley_never_gonna_give_you_up.tic"}, 
-		{ "name": "coffin dance.tic", "hash": "b2cb82f0179b6b7f6f952ad58bc40ced", "id": 1194, "filename": "coffin_dance.tic"}, 
 		{ "name": "ticmodplayer.tic", "hash": "f1e3474399964a04cbffbeaf00a99117", "id": 3165, "filename": "ticmodplayer.tic"}, 
+		{ "name": "coffin dance.tic", "hash": "b2cb82f0179b6b7f6f952ad58bc40ced", "id": 1194, "filename": "coffin_dance.tic"}, 
 		{ "name": "Micro Mages - Title Screen.tic", "hash": "20b9ff23eb65d7c3d6b1816466dcd856", "id": 616, "filename": "micro_mages_title_screen.tic"}, 
 		{ "name": "Its a final countdown!.tic", "hash": "84948299c2a2c24f142bb6339b9a0d55", "id": 905, "filename": "its_a_final_countdown.tic"}, 
 		{ "name": "Pigstep.tic", "hash": "9e11506f019adc0b22609f19d299f945", "id": 1346, "filename": "pigstep.tic"}, 
@@ -90,11 +90,11 @@
 		{ "name": "DELETED.tic", "hash": "fca2bbd28fbfcf0f008dac02035d8b38", "id": 1136, "filename": "deleted.tic"}, 
 		{ "name": "believer 8 bit.tic", "hash": "d926e70eb48e486a576f214501cb0143", "id": 1224, "filename": "believer_8_bit.tic"}, 
 		{ "name": "Alone.tic", "hash": "5e43c265ddb283af6bd305f33bf3272a", "id": 2014, "filename": "alone.tic"}, 
-		{ "name": "Force.tic", "hash": "21108cf8da7f333810577e1c3dbfc2d5", "id": 1197, "filename": "force.tic"}, 
 		{ "name": "music is not a from musican (55x55).tic", "hash": "f8e68bc973a4014b0766faa631b2a3f8", "id": 1252, "filename": "music_is_not_a_from_musican_55x55.tic"}, 
+		{ "name": "Force.tic", "hash": "21108cf8da7f333810577e1c3dbfc2d5", "id": 1197, "filename": "force.tic"}, 
 		{ "name": "Chocobo Thema.tic", "hash": "66cac027f03854c745ae8f0cae1213ed", "id": 1278, "filename": "chocobo_thema.tic"}, 
-		{ "name": "Pademia.tic", "hash": "d491dde0055e1e6bbe18da7c2b3f691c", "id": 1184, "filename": "pademia.tic"}, 
 		{ "name": "Synthness?.tic", "hash": "5aae0382b5b233d6a242d094fe3022ac", "id": 1360, "filename": "synthness.tic"}, 
+		{ "name": "Pademia.tic", "hash": "d491dde0055e1e6bbe18da7c2b3f691c", "id": 1184, "filename": "pademia.tic"}, 
 		{ "name": "UNDERTALE - Spider Dance.tic", "hash": "1f82cdd448e16cd03bdee8652f948a8f", "id": 1022, "filename": "undertale_spider_dance.tic"}, 
 		{ "name": "Super Mario Bros. Music - Scene Change.tic", "hash": "cb6d0fc2292cc65c9188ede4c07216b6", "id": 3738, "filename": "super_mario_bros_music_scene_change.tic"}, 
 		{ "name": "Keyboard Demo.tic", "hash": "4cbb23c256479dfa0df0d4c9b12de63a", "id": 1891, "filename": "keyboard_demo.tic"}, 
@@ -160,9 +160,10 @@
 		{ "name": "FGM125 DML1345 chip (Music test).tic", "hash": "05c68af0728ac780d5cd1a201ec41776", "id": 3902, "filename": "fgm125_dml1345_chip_music_test.tic"}, 
 		{ "name": "Mania midi to Tic Music Demo.tic", "hash": "44ababb97e369698212cc3ff9e3d6998", "id": 3747, "filename": "mania_midi_to_tic_music_demo.tic"}, 
 		{ "name": "8-Bit Triggered Sound Effect.tic", "hash": "f99bac22ec49b41c1549989ab58a33f1", "id": 3599, "filename": "8_bit_triggered_sound_effect.tic"}, 
-		{ "name": "piano roll.tic", "hash": "e62797c518090aa720a505c3234a854b", "id": 3726, "filename": "piano_roll.tic"}, 
 		{ "name": "Bubble Bobble title Music.tic", "hash": "fc676751930d0e02b286fa2f1351b565", "id": 3762, "filename": "bubble_bobble_title_music.tic"}, 
+		{ "name": "piano roll.tic", "hash": "e62797c518090aa720a505c3234a854b", "id": 3726, "filename": "piano_roll.tic"}, 
 		{ "name": "Timeline 2 Music.tic", "hash": "7a56abc5fd144686c7a412ae9ecb4a34", "id": 3825, "filename": "timeline_2_music.tic"}, 
+		{ "name": "Radio Zonde - Opaque Heart (TIC-80 cover).tic", "hash": "64ca826eb8bef740d39300f91cf1aa74", "id": 3999, "filename": "radio_zonde_opaque_heart_tic_80_cover.tic"}, 
 		{ "name": "PILOT8 soundtrack conversion.tic", "hash": "51ec1990cf664c997a3552cc3d3d4ec5", "id": 747, "filename": "pilot8_soundtrack_conversion.tic"}, 
 		{ "name": "Patato Man mashup Cannon In D music.tic", "hash": "adf2def4157fa5bd244bcfc47283e82b", "id": 769, "filename": "patato_man_mashup_cannon_in_d_music.tic"}, 
 		{ "name": "TIC rap.tic", "hash": "f2b21081f909025cc0cbe1ef77d5d844", "id": 864, "filename": "tic_rap.tic"}, 
@@ -180,8 +181,7 @@
 		{ "name": "nazartopsuper&#39;s Noise generator.tic", "hash": "6f1b464c098044f608b016f2b2c5e98d", "id": 3892, "filename": "nazartopsuper_s_noise_generator.tic"}, 
 		{ "name": "Pumba Caracal.tic", "hash": "f39cc1b9b89efb6f2c6289fce12452b5", "id": 3891, "filename": "pumba_caracal.tic"}, 
 		{ "name": "Just test on PICO-8 wavefroms.tic", "hash": "44f14f6727205bf07db72215174fc293", "id": 3915, "filename": "just_test_on_pico_8_wavefroms.tic"}, 
-		{ "name": "My new music.tic", "hash": "7ff2d99b56d86ad631ab195fb8b645a7", "id": 3953, "filename": "my_new_music.tic"}, 
-		{ "name": "Radio Zonde - Opaque Heart (TIC-80 cover).tic", "hash": "64ca826eb8bef740d39300f91cf1aa74", "id": 3999, "filename": "radio_zonde_opaque_heart_tic_80_cover.tic"} 
+		{ "name": "My new music.tic", "hash": "7ff2d99b56d86ad631ab195fb8b645a7", "id": 3953, "filename": "my_new_music.tic"} 
 	
 	]
 }

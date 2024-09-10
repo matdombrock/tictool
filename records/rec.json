@@ -26363,8 +26363,8 @@
   },
   "3882": {
     "name": "Speed Train - Long Track.tic",
-    "section": "WIP",
-    "hash": "6facd29f959a67578d436626c7846891",
+    "section": "Games",
+    "hash": "b6e5e40c2863fd0761e0dd9fa4d6f52b",
     "filename": "speed_train_long_track.tic",
     "id": 3882
   },
@@ -26742,7 +26742,7 @@
   "3936": {
     "name": "infinite palettes.tic",
     "section": "Tools",
-    "hash": "1fb569e97b35b6b6e58163384e1d5f17",
+    "hash": "ee01ee22d955035dd934ed7a4eebaf73",
     "filename": "infinite_palettes.tic",
     "id": 3936
   },
@@ -27148,7 +27148,7 @@
   "3994": {
     "name": "TICsweeper.tic",
     "section": "Games",
-    "hash": "2b60175a945af9e213ee8077b443aa28",
+    "hash": "9fba2a2d8c681292a4c991a701f7febf",
     "filename": "ticsweeper.tic",
     "id": 3994
   },
@@ -27161,8 +27161,8 @@
   },
   "3996": {
     "name": "ADOFAI Demake.tic",
-    "section": "WIP",
-    "hash": "7faaf09b6d57dc8873e964f2fc6dc90f",
+    "section": "Games",
+    "hash": "9617bcdcabaa04755f0f5bb8cf082b82",
     "filename": "adofai_demake.tic",
     "id": 3996
   },
@@ -27186,5 +27186,33 @@
     "hash": "64ca826eb8bef740d39300f91cf1aa74",
     "filename": "radio_zonde_opaque_heart_tic_80_cover.tic",
     "id": 3999
+  },
+  "4000": {
+    "name": "clown box sword.tic",
+    "section": "Tech",
+    "hash": "cbaa6f0ca912397f134b901798ccb0ed",
+    "filename": "clown_box_sword.tic",
+    "id": 4000
+  },
+  "4001": {
+    "name": "metaballs.tic",
+    "section": "Demoscene",
+    "hash": "999771c90f0ff08ce5217c330b6bf9f3",
+    "filename": "metaballs.tic",
+    "id": 4001
+  },
+  "4002": {
+    "name": "Oort cloud crossing.tic",
+    "section": "Games",
+    "hash": "6b2ad8d7be08602b803aa262633b698f",
+    "filename": "oort_cloud_crossing.tic",
+    "id": 4002
+  },
+  "4003": {
+    "name": "juggle pong.tic",
+    "section": "Games",
+    "hash": "e9bf45f8a416ff6c0fc5322af4d4324b",
+    "filename": "juggle_pong.tic",
+    "id": 4003
   }
 }
