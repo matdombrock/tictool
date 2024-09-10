@@ -147,7 +147,7 @@ ___________.__     ___________           .__
     }
     private async update(): Promise<void> {
         const mn = new Update();
-        await mn.getListings();
+        // await mn.getListings();
         await mn.getCarts();
         mn.generateMeta();
         const ana = Analytics.analyze(this.meta);

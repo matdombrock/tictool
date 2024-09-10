@@ -30,5 +30,8 @@ export type CartMeta = {
 };
 
 export type DLRecord = {
-    [key: number]: CartData;
+    [key: number]: {
+        cartData: CartData;
+        ts: Number;
+    }
 };

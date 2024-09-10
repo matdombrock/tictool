@@ -23,30 +23,33 @@ class Update {
             console.log('Check DL: No target in records - ', cartData.id);
             return true;
         }
-        if (target.filename !== cartData.filename) {
+        if (target.cartData.filename !== cartData.filename) {
             console.log('Check DL: New filename - ', cartData.filename);
             return true;
         }
-        if (target.name !== cartData.name) {
+        if (target.cartData.name !== cartData.name) {
             console.log('Check DL: New name - ', cartData.name);
             return true;
         }
-        if (target.section !== cartData.section) {
+        if (target.cartData.section !== cartData.section) {
             console.log('Check DL: New section - ', cartData.name);
             return true;
         }
-        if (target.hash !== cartData.hash) {
+        if (target.cartData.hash !== cartData.hash) {
             console.log('Check DL: New hash - ', cartData.name);
             return true;
         }
-        if (!fs.existsSync(cfg.dlDir + '/' + cartData.section + '/' + cartData.filename)) {
+        if (!fs.existsSync(cfg.dlDir + '/' + cartData.section + '/' + cartData.id + '_' +cartData.filename)) {
             console.log('Check DL: Cant find dl - ', cartData.name);
             return true;
         }
         return false;
     }
     private recDL(cartData: CartData): void {
-        this.records[cartData.id] = cartData;
+        this.records[cartData.id] = {
+            cartData: cartData,
+            ts: Date.now()
+        };
         fs.writeFileSync(cfg.recDir + cfg.recFile, JSON.stringify(this.records, null, 2));
     }
     private readListing(section: Section): CartDataRaw[] {
@@ -85,7 +88,7 @@ class Update {
                 if (checkDL) {
                     const url = cfg.apiUrl + 'cart/' + cd.hash + '/' + cd.filename;
                     console.log('Downloading cart: ', cd.name);
-                    await Util.downloadFile(url, dir + '/' + cd.filename, true, false);
+                    await Util.downloadFile(url, dir + '/' + cd.id + '_' + cd.filename, true, false);
                     this.recDL(cd);
                     this.newCarts++;
                 }
@@ -127,8 +130,10 @@ class Update {
                     id: -1,
                     filename: 'null'
                 };
+                const id = file.split('_')[0];
+                const filename = file.split('_')[1];
                 for (let record of Object.values(this.records)) {
-                    if (record.filename === file) rec = record;
+                    if (record.cartData.id.toString()  === id) rec = record.cartData;
                 }
                 if (rec === null) {
                     throw new Error('Cant find dl record for ' + file);
