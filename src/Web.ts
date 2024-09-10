@@ -47364,12 +47364,13 @@ function search(query: string, script: string, section: string) {
             return;
         }
         for (let item of res) {
+            const metaId = `metaBtn-${item.cartMeta.id}`;
             html += '<div class="listing-item">';
                 html += '<div class="listing-title">';
-                    html += `${item.cartMeta.name.replace('.tic','')}`
+                    html += `${item.cartMeta.name.replace('.tic','')}`;
                 html += '</div>'; 
                 html += '<div class="listing-info">';
-                    html += `${item.cartMeta.section} - ${item.cartMeta.author} -  ${item.cartMeta.script}`
+                    html += `${item.cartMeta.section} - ${item.cartMeta.author} -  ${item.cartMeta.script}`;
                 html += '</div>';
                 html += '<div class="listing-desc">';
                     html += item.cartMeta.desc || 'No description...';
@@ -47378,12 +47379,19 @@ function search(query: string, script: string, section: string) {
                 html += '<div>';
                     html += `<a href="https://tic80.com/play?cart=${item.cartMeta.id}" target="_blank"><button>//PLAY</button></a>`;
                     html += `<a href="https://tic80.com/cart/${item.cartMeta.hash}/${item.cartMeta.filename}" target="_blank"><button>//DOWNLOAD</button></a>`;
-                    html += `<button>//META</button>`;
+                    html += `<button id="${metaId}">//META</button>`;
                 html += '</div>'
             html += '</div>';
         }
         // html += '<pre>' + JSON.stringify(res, null, 2) + '</pre>'
         resElement.innerHTML = html;
+        // Must register listeners after content is rendered
+        for (let item of res) {
+            const metaId = `metaBtn-${item.cartMeta.id}`;
+            document.getElementById(metaId)?.addEventListener('click', ()=>{
+                alert(JSON.stringify(item, null, 2));
+            });
+        }
     }
 }
 

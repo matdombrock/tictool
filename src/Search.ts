@@ -64,34 +64,39 @@ class Search {
     }
     static search(meta: CartMeta[], query: string, options: SearchOptions, print: boolean = false): SearchResult[]  {
         let res: SearchResult[] = [];
+        query = query.toLowerCase();
+        let querySplit = query.split(' ');
+        querySplit.push(query);
         for (let item of meta){
-            let points = 0;
-            query = query.toLowerCase();
             if (options.script) {
                 if (item.script.toLowerCase() !== options.script.toLowerCase()) continue;
             }
             if (options.section) {
                 if (item.section.toLowerCase() !== options.section.toLowerCase()) continue;
-            } 
-            if (item.name.includes(query) || query.includes(item.name.toLowerCase())) {
-                points += 5;
             }
-            if (item.filename.includes(query) || query.includes(item.filename.toLowerCase())) {
-                points += 5;
-            }
-            if (item.desc.includes(query) || query.includes(item.desc.toLowerCase())) {
-                points += 5;
-            }
-            if (item.author.includes(query) || query.includes(item.author.toLowerCase())) {
-                points += 5;
-            }
-            if (item.script.includes(query) || query.includes(item.script.toLowerCase())) {
-                points += 5;
+            let points = 0; 
+            for (let qitem of querySplit) {
+                if (item.name.includes(query) || qitem.includes(item.name.toLowerCase())) {
+                    points += 5;
+                }
+                if (item.filename.includes(qitem) || qitem.includes(item.filename.toLowerCase())) {
+                    points += 5;
+                }
+                if (item.desc.includes(qitem) || qitem.includes(item.desc.toLowerCase())) {
+                    points += 5;
+                }
+                if (item.author.includes(qitem) || qitem.includes(item.author.toLowerCase())) {
+                    points += 5;
+                }
+                if (item.script.includes(qitem) || qitem.includes(item.script.toLowerCase())) {
+                    points += 5;
+                }
             }
             if (points) {
                 res.push({cartMeta: item, points: points});
             }
         }
+        res = res.sort((a, b) => b.points - a.points);
         if (print) this.print(res);
         console.log('Query: '+query);
         console.log('Options: ');
