@@ -1,5 +1,7 @@
-import Search, { SearchOptions } from "./Search";
+import Search, { SearchOptions, SearchResult } from "./Search";
+import Analytics from "./Analytics";
 
+// Note: `any` is used when passing cart meta because TS cant handle using a type on this much data
 const meta = [
     {
         "name": "12 Paces Joe.tic",
@@ -47321,18 +47323,24 @@ const analyticsBtn = document.getElementById('analyticsBtn') as HTMLButtonElemen
 const randomBtn = document.getElementById('randomBtn') as HTMLButtonElement;
 const searchBtn = document.getElementById('searchBtn') as HTMLButtonElement;
 
+const checkLimit = document.getElementById('checkLimit') as HTMLInputElement;
+const checkJSON = document.getElementById('checkJSON') as HTMLInputElement;
+
 function onInput(e: Event): void{
     // const target = e.target as HTMLInputElement;
     search(queryElement.value, scriptElement.value, sectionElement.value);
 }
 function onAbout(): void {
-    let html = 'TicTool - Search is a tool for searching the TIC80 cart catalog powered by the TicTool CLI.<br/>';
+    let html = '<h3>Overview</h3>'; 
+    html += 'TicTool - Search is a tool for searching the TIC80 cart catalog powered by the TicTool CLI.<br/>';
     html += 'Cart downloads come from TIC80.com. <br/>';
-    html += 'Start seareching by typing a filter query or selecting a dropdown option. <br/>';
+    html += '<br/>';
     resElement.innerHTML = html;
 }
 function onAnalytics(): void {
-    resElement.innerHTML = 'analytics';
+    const ana = Analytics.analyze(meta as any);
+    ana.authors = {};
+    resElement.innerHTML = '<pre>' + JSON.stringify(ana, null, 2) + '</pre>';
 }
 function onRandom(): void {
     resElement.innerHTML = 'random';
@@ -47340,10 +47348,21 @@ function onRandom(): void {
 
 function search(query: string, script: string, section: string) {
     const opts: SearchOptions = { script: script, section: section };
-    const res = Search.search(meta as any, query, opts);
+    const res: SearchResult[] = Search.search(meta as any, query, opts);
+    if (checkLimit.checked) res.length = 10;
     if (resElement) {
         resElement.innerHTML = 'Searching...';
         let html = '<div>' + res.length + ' results</div><br/>';
+        if (checkJSON.checked) {
+            html += '<pre>';
+            for (let item of res) {
+                html += JSON.stringify(item.cartMeta, null, 2);
+                html += '\n';
+            }
+            html += '</pre>';
+            resElement.innerHTML = html;
+            return;
+        }
         for (let item of res) {
             html += '<div class="listing-item">';
                 html += '<div class="listing-title">';
@@ -47376,10 +47395,12 @@ addEventListener('load', ()=>{
 queryElement.value = '';
 scriptElement.value = '';
 sectionElement.value = '';
+checkJSON.checked = false;
+checkLimit.checked = false;
 // queryElement.addEventListener('input', onInput);
-queryElement.addEventListener('change', onInput);
-scriptElement.addEventListener('input', onInput);
-sectionElement.addEventListener('input', onInput);
+// queryElement.addEventListener('change', onInput);
+// scriptElement.addEventListener('input', onInput);
+// sectionElement.addEventListener('input', onInput);
 searchBtn.addEventListener('click', onInput);
 
 aboutBtn.addEventListener('click', onAbout);

@@ -21,6 +21,9 @@ button {
 h1 {
     margin-top: 1rem;
 }
+a {
+    color: var(--bright);
+}
 .tic-icon {
     height:1.75rem;
 }

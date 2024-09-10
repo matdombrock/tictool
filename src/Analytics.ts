@@ -1,6 +1,4 @@
 import { CartMeta } from "./types";
-import Util from "./Util";
-import cfg from "./cfg";
 
 type Count = { [key: string]: number };
 type DeepCount = { [key: string]: Count }
@@ -14,9 +12,7 @@ type Analysis = {
     totalSize: number;
 }
 class Analytics {
-    static metaRaw = Util.readFile(cfg.recDir + cfg.metaFile);
-    static meta = JSON.parse(this.metaRaw) as CartMeta[];
-    static analyze(): Analysis {
+    static analyze(meta: CartMeta[]): Analysis {
         let ana: Analysis = {
             langs: {},
             authors: {},
@@ -25,7 +21,7 @@ class Analytics {
             cartCount: 0,
             totalSize: 0
         };
-        for (let item of this.meta) {
+        for (let item of meta) {
             if (ana.langs[item.script]) ana.langs[item.script]++;
             else ana.langs[item.script] = 1;
             if (ana.authors[item.author]) ana.authors[item.author]++;
@@ -42,9 +38,9 @@ class Analytics {
         }
         return ana;
     }
-    static maxID(): number {
+    static maxID(meta: CartMeta[]): number {
         let res = 0;
-        for (let item of this.meta) {
+        for (let item of meta) {
             res = item.id > res ? item.id : res;
         }
         return res;

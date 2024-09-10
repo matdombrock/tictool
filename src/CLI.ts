@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as ChildProcess from "child_process";
 
 const { Command } = require('commander');
@@ -96,7 +97,7 @@ ___________.__     ___________           .__
             .command('max-id')
             .description('Calculate the maximum id')
             .action(() => {
-                console.log('Max ID: ' + Analytics.maxID());
+                console.log('Max ID: ' + Analytics.maxID(this.meta));
             });
 
         this.program
@@ -113,7 +114,7 @@ ___________.__     ___________           .__
         ChildProcess.exec(start);
     }
     private random(): void {
-        const id = Math.floor(Math.random() * Analytics.maxID());
+        const id = Math.floor(Math.random() * Analytics.maxID(this.meta));
         console.log('Random ID: ' + id);
         this.play(id.toString());
     }
@@ -123,7 +124,7 @@ ___________.__     ___________           .__
         ChildProcess.exec(start);
     }
     private analytics(): void {
-        const ana = Analytics.analyze();
+        const ana = Analytics.analyze(this.meta);
         console.log('Overall language usage:');
         console.log(ana.langs);
         console.log();
@@ -149,6 +150,8 @@ ___________.__     ___________           .__
         // await mn.getListings();
         await mn.getCarts();
         mn.generateMeta();
+        const ana = Analytics.analyze(this.meta);
+        fs.writeFileSync(cfg.recDir + cfg.anaFile, JSON.stringify(ana, null, 2));
         console.log('Found ' + mn.newCarts + ' new carts!');
     }
     run(): void {

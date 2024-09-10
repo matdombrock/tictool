@@ -7,6 +7,7 @@
     "api": "tsc && node ./dist/API",
     "web-dev": "webpack --mode development",
     "web-build": "webpack --mode production",
+    "web-run": "npm run web-dev && cp ./dist/bundle.js ./webui/bundle.js && npm run api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

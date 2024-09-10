@@ -5,6 +5,7 @@ const cfg = {
     recDir: __dirname + '/../records/',
     recFile: 'rec.json',
     metaFile: 'meta.json',
+    anaFile: 'ana.json',
     listingSections: [
         'Games', 'Tech', 'Tools', 'Music', 'WIP', 'Demoscene', 'Livecoding'
     ]
