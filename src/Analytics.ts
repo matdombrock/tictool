@@ -1,9 +1,10 @@
 import { CartMeta } from "./types";
+import cfg from "./cfg";
 
 type Count = { [key: string]: number };
 type DeepCount = { [key: string]: Count }
 
-type Analysis = {
+export type Analysis = {
     langs: Count;
     authors: Count;
     sections: Count;
@@ -12,6 +13,14 @@ type Analysis = {
     totalSize: number;
 }
 class Analytics {
+    private static sortObjectByValue(obj: Object) {
+        // Convert object to array of [key, value] pairs
+        const entries = Object.entries(obj);
+        // Sort the array based on values (second element of each pair)
+        entries.sort((a, b) => b[1] - a[1]);
+        // Convert sorted array back to an object
+        return Object.fromEntries(entries);
+    }
     static analyze(meta: CartMeta[]): Analysis {
         let ana: Analysis = {
             langs: {},
@@ -36,6 +45,13 @@ class Analytics {
             ana.cartCount++;
             // }   
         }
+        ana.langs = this.sortObjectByValue(ana.langs);
+        ana.authors = this.sortObjectByValue(ana.authors);
+        ana.sections = this.sortObjectByValue(ana.authors);
+        for (let section of cfg.listingSections) {
+            ana.sectionLangs[section] = this.sortObjectByValue(ana.sectionLangs[section]);
+        }
+
         return ana;
     }
     static maxID(meta: CartMeta[]): number {

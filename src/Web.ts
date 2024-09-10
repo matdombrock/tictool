@@ -50563,20 +50563,40 @@ function onAbout(): void {
 }
 function onAnalytics(): void {
     const ana = Analytics.analyze(meta as any);
-    ana.authors = {};
-    resElement.innerHTML = '<pre>' + JSON.stringify(ana, null, 2) + '</pre>';
+    let html = '<h3>Overall language usage:</h3>';
+    for (let [key, val] of Object.entries(ana.langs)) {
+        html += `${key}: ${val} <br/>`;
+    }
+    html += '<h3>Carts by section:</h3>';
+    for (let [key, val] of Object.entries(ana.langs)) {
+        html += `${key}: ${val} <br/>`;
+    }
+    html += '<h3>Languages by section:</h3>';
+    for (let [section, data] of Object.entries(ana.sectionLangs)) {
+        html += `${section}:<br/>`;
+        for (let [key, val] of Object.entries(data)) {
+            html += `-- ${key}: ${val} <br/>`; 
+        }
+    }
+    html += '<h3>Authors by cart count:</h3>';
+    for (let [key, val] of Object.entries(ana.authors)) {
+        html += `${key}: ${val} <br/>`;
+    }
+    // html += '<pre>' + JSON.stringify(ana, null, 2) + '</pre>';
+    resElement.innerHTML = html;
 }
 function onRandom(): void {
-    resElement.innerHTML = 'random';
+    resElement.innerHTML = 'random coming soon';
 }
 
 function search(query: string, script: string, section: string) {
     const opts: SearchOptions = { script: script, section: section };
     const res: SearchResult[] = Search.search(meta as any, query, opts);
-    if (checkLimit.checked) res.length = 10;
+    const limited = (checkLimit.checked && res.length > 64);
+    if (limited) res.length = 64;
     if (resElement) {
         resElement.innerHTML = 'Searching...';
-        let html = '<div>' + res.length + ' results</div><br/>';
+        let html = '<div>' + res.length + ' results ' + (limited ? ' (limited)' : '') + '</div><br/>';
         if (checkJSON.checked) {
             html += '<pre>';
             for (let item of res) {
@@ -50635,7 +50655,7 @@ queryElement.value = '';
 scriptElement.value = '';
 sectionElement.value = '';
 checkJSON.checked = false;
-checkLimit.checked = false;
+checkLimit.checked = true;
 // queryElement.addEventListener('input', onInput);
 // queryElement.addEventListener('change', onInput);
 // scriptElement.addEventListener('input', onInput);
