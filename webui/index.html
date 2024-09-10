@@ -1,48 +1,54 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>TicTool - Search</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <h1><img src="favicon.png" class="tic-icon"> TicTool - Search</h1>
-    The unofficial TIC80.com search tool!
-    <hr/>
-    <span class="top-btn"id="aboutBtn">about</span> | 
-    <span class="top-btn" id="analyticsBtn">analytics</span> | 
-    <span class="top-btn" id="randomBtn">random</span>
-    <br/><br/>
-    <input type="text" id="query" placeholder="Filter Query">
-    <select id="script">
-        <option value="">Any</option>
-        <option value="lua">Lua</option>
-        <option value="ruby">Ruby</option>
-        <option value="js">JS</option>
-        <option value="moon">Moon</option>
-        <option value="fennel">Fennel</option>
-        <option value="squirrel">Squirrel</option>
-        <option value="Wren">Wren</option>
-        <option value="wasm">WASM</option>
-        <option value="janet">Janet</option>
-        <option value="scheme">Scheme</option>
-        <option value="python">Python</option>
-    </select>
-    <select id="section">
-        <option value="">Any</option>
-        <option value="Games">Games</option>
-        <option value="Tech">Tech</option> 
-        <option value="Tools">Tools</option>
-        <option value="Music">Music</option>
-        <option value="WIP">WIP</option>
-        <option value="Demoscene">Demoscene</option>
-        <option value="Livecoding">Livecoding</option>
-    </select>
-    <button id="searchBtn">//SEARCH</button>
-    <br/>
-    <input type="checkbox" id="checkLimit"> Limit Results
-    <input type="checkbox" id="checkJSON"> JSON
-    <br/><br/>
-    <div id="results">Searching...</div>
-    <hr/>
-    <div>By Mathieu Dombrock (Replicat) - <a href="https://github.com/matdombrock/tictool" target="_blank">GPL3 (GitHub)</a></div>
-    <br/><br/>
-    <script src="bundle.js"></script>
+    <body>
+        <h1><img src="favicon.png" class="tic-icon"> TicTool - Search</h1>
+        The unofficial TIC80.com search tool!
+        <hr/>
+        <span class="top-btn"id="aboutBtn">about</span> | 
+        <span class="top-btn" id="analyticsBtn">analytics</span> | 
+        <span class="top-btn" id="randomBtn">random</span>
+        <br/><br/>
+        <input type="text" id="query" placeholder="Filter Query">
+        <select id="script">
+            <option value="">Any</option>
+            <option value="lua">Lua</option>
+            <option value="ruby">Ruby</option>
+            <option value="js">JS</option>
+            <option value="moon">Moon</option>
+            <option value="fennel">Fennel</option>
+            <option value="squirrel">Squirrel</option>
+            <option value="Wren">Wren</option>
+            <option value="wasm">WASM</option>
+            <option value="janet">Janet</option>
+            <option value="scheme">Scheme</option>
+            <option value="python">Python</option>
+        </select>
+        <select id="section">
+            <option value="">Any</option>
+            <option value="Games">Games</option>
+            <option value="Tech">Tech</option> 
+            <option value="Tools">Tools</option>
+            <option value="Music">Music</option>
+            <option value="WIP">WIP</option>
+            <option value="Demoscene">Demoscene</option>
+            <option value="Livecoding">Livecoding</option>
+        </select>
+        <button id="searchBtn">//SEARCH</button>
+        <br/>
+        <input type="checkbox" id="checkLimit"> Limit Results
+        <input type="checkbox" id="checkJSON"> JSON
+        <br/><br/>
+        <div id="results">Searching...</div>
+        <hr/>
+        <div>By Mathieu Dombrock (Replicat) - <a href="https://github.com/matdombrock/tictool" target="_blank">GPL3 (GitHub)</a></div>
+        <br/><br/>
+        <script src="bundle.js"></script>
+    </body>
 </html>
