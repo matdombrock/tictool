@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs, { mkdir } from 'fs';
 
 import Util from './Util';
 import cfg from './cfg';
@@ -53,7 +53,6 @@ class Update {
         const file = Util.readFile(cfg.listingDir + section + '.json');
         if (!file || file === '') throw new Error('Cant read listing');
         const parsed = JSON.parse(file);
-        console.log(typeof JSON.parse(file));
         if (!parsed || !parsed.files) throw new Error('Cant parse listing');
         return parsed.files as CartDataRaw[];
     }
@@ -72,7 +71,7 @@ class Update {
             let i = 0;
             for (let cart of listing as CartDataRaw[]){
                 i++;
-                console.log('--- ', i, '/', listing.length);
+                console.log('--- ', i, '/', listing.length, section);
                 const cd: CartData = {
                     name: cart.name,
                     section: section,
@@ -82,7 +81,8 @@ class Update {
                 }
                 const dir = cfg.dlDir + cd.section;
                 Util.mkdir(dir);
-                if (this.checkDL(cd)) {
+                const checkDL = this.checkDL(cd);
+                if (checkDL) {
                     const url = cfg.apiUrl + 'cart/' + cd.hash + '/' + cd.filename;
                     console.log('Downloading cart: ', cd.name);
                     await Util.downloadFile(url, dir + '/' + cd.filename, true, false);
@@ -91,6 +91,17 @@ class Update {
                 }
                 else {
                     console.log('Cart exists: ' + cd.name);
+                }
+                // Download covers
+                Util.mkdir(cfg.coverDir);
+                const coverPath = cfg.coverDir + cd.id + '_' + cd.filename + '.gif';
+                if (!fs.existsSync(coverPath) || checkDL) {// Also re-download if file changed
+                    const url = cfg.apiUrl + 'cart/' + cd.hash + '/cover.gif';
+                    console.log('Downloading cover: ', cd.name);
+                    await Util.downloadFile(url, coverPath, true, false);
+                }
+                else {
+                    console.log('Cart cover exists: ' + cd.name); 
                 }
             }
         }
@@ -108,7 +119,7 @@ class Update {
             for (let file of files) {
                 if (file === '.local') continue;
                 console.log();
-                console.log('Section: ', file);
+                console.log(file);
                 let rec: CartData = {
                     name: 'null',
                     section: 'Games',

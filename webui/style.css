@@ -36,6 +36,13 @@ a {
     background-image: linear-gradient(to right, var(--accent) , var(--bg));
     padding: 1rem;
     margin-bottom: 1rem;
+    min-height: 8.5rem;
+}
+.cover-img {
+    width: 200px;
+    background: var(--bright);
+    float: left;
+    margin-right: 1rem;
 }
 .listing-title {
     font-size: 1.5rem;

@@ -47366,6 +47366,7 @@ function search(query: string, script: string, section: string) {
         for (let item of res) {
             const metaId = `metaBtn-${item.cartMeta.id}`;
             html += '<div class="listing-item">';
+                html += `<img class="cover-img" src="covers/${item.cartMeta.id}_${item.cartMeta.filename}.gif">`;
                 html += '<div class="listing-title">';
                     html += `${item.cartMeta.name.replace('.tic','')}`;
                 html += '</div>'; 

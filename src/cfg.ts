@@ -2,6 +2,7 @@ const cfg = {
     apiUrl: 'https://tic80.com/',
     listingDir: __dirname + '/../listing/',
     dlDir: __dirname + '/../download/',
+    coverDir: __dirname + '/../webui/covers/',
     recDir: __dirname + '/../records/',
     recFile: 'rec.json',
     metaFile: 'meta.json',
