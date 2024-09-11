@@ -68,5 +68,5 @@ a {
 .listing-desc {
     font-style: italic;
     max-height: 3.3rem;
-    overflow: scroll;
+    overflow-y:auto;
 }
