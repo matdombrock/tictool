@@ -37,4 +37,21 @@ Contains the Typescript source files.
 Contains the web UI static content files.
 
 ## FAQ
+### Why does this repo contain TIC80 carts?
+The carts are provided for research purposes only. Their function here is for generating metadata and launching the carts locally. 
+
+### Can you remove my cart?
+Yes of course. Create an issue or get in touch with my in some other way and I will add your cart to the block list. 
+
 ### Does this create a load on TIC80.com?
+Not really. This tool is careful to avoid doing that. 
+- Carts provided here (so you don't have to download them)
+- Running `update` only downloads *new/updates* carts
+- Cover images are served locally
+- Searching does not hit the tic80.com API at all
+
+### How is the web UI generated?
+- Grab/cache listing data from API
+- Download the carts according to listing data (if we find a new cart or updated hash)
+- Parse the carts for extra metadata and cache the results
+- Use the cached data files to power the static search web UI.

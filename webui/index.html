@@ -8,46 +8,55 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1><img src="favicon.png" class="tic-icon"> TicTool - Search</h1>
-        The unofficial TIC80.com search tool!
+        <div id="header">
+            <h1><img src="favicon.png" class="tic-icon"> TicTool - Search</h1>
+            The unofficial <a href="https://tic80.com" target="_blank">TIC80.com</a> search tool!
+            <hr/>
+            <span class="top-btn"id="aboutBtn">about</span> | 
+            <span class="top-btn" id="analyticsBtn">analytics</span> | 
+            <span class="top-btn" id="bookmarksBtn">bookmarks</span> | 
+            <span class="top-btn" id="randomBtn">random</span>
+            <br/><br/>
+            <input type="text" id="query" placeholder="Filter Query">
+            <select id="script">
+                <option value="">Any</option>
+                <option value="lua">Lua</option>
+                <option value="ruby">Ruby</option>
+                <option value="js">JS</option>
+                <option value="moon">Moon</option>
+                <option value="fennel">Fennel</option>
+                <option value="squirrel">Squirrel</option>
+                <option value="Wren">Wren</option>
+                <option value="wasm">WASM</option>
+                <option value="janet">Janet</option>
+                <option value="scheme">Scheme</option>
+                <option value="python">Python</option>
+            </select>
+            <select id="section">
+                <option value="">Any</option>
+                <option value="Games">Games</option>
+                <option value="Tech">Tech</option> 
+                <option value="Tools">Tools</option>
+                <option value="Music">Music</option>
+                <option value="WIP">WIP</option>
+                <option value="Demoscene">Demoscene</option>
+                <option value="Livecoding">Livecoding</option>
+            </select>
+            <button id="searchBtn">//SEARCH</button>
+            <br/><br/>
+            <input type="checkbox" id="checkLimit"> Limit Results
+            <input type="checkbox" id="checkJSON"> JSON
+        </div>
         <hr/>
-        <span class="top-btn"id="aboutBtn">about</span> | 
-        <span class="top-btn" id="analyticsBtn">analytics</span> | 
-        <span class="top-btn" id="randomBtn">random</span>
-        <br/><br/>
-        <input type="text" id="query" placeholder="Filter Query">
-        <select id="script">
-            <option value="">Any</option>
-            <option value="lua">Lua</option>
-            <option value="ruby">Ruby</option>
-            <option value="js">JS</option>
-            <option value="moon">Moon</option>
-            <option value="fennel">Fennel</option>
-            <option value="squirrel">Squirrel</option>
-            <option value="Wren">Wren</option>
-            <option value="wasm">WASM</option>
-            <option value="janet">Janet</option>
-            <option value="scheme">Scheme</option>
-            <option value="python">Python</option>
-        </select>
-        <select id="section">
-            <option value="">Any</option>
-            <option value="Games">Games</option>
-            <option value="Tech">Tech</option> 
-            <option value="Tools">Tools</option>
-            <option value="Music">Music</option>
-            <option value="WIP">WIP</option>
-            <option value="Demoscene">Demoscene</option>
-            <option value="Livecoding">Livecoding</option>
-        </select>
-        <button id="searchBtn">//SEARCH</button>
-        <br/>
-        <input type="checkbox" id="checkLimit"> Limit Results
-        <input type="checkbox" id="checkJSON"> JSON
-        <br/><br/>
+        <!-- <div id="top-spacer"></div> -->
+        <div id="resultsCount"></div>
         <div id="results">Searching...</div>
         <hr/>
-        <div>By Mathieu Dombrock (Replicat) - <a href="https://github.com/matdombrock/tictool" target="_blank">GPL3 (GitHub)</a></div>
+        <div>
+            By Mathieu Dombrock (Replicat) - 
+            <a href="https://github.com/matdombrock/tictool" target="_blank">GPL3 (GitHub)</a> - 
+            <a href="https://github.com/sponsors/nesbox?o=esb" target="_blank">Donate to TIC80</a>
+        </div>
         <br/><br/>
         <script src="bundle.js"></script>
     </body>
