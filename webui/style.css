@@ -72,6 +72,7 @@ a:hover {
 .listing-desc {
     font-style: italic;
     overflow-y: auto;
+    height: 2.5rem;
 }
 @media only screen and (max-width: 600px) {
     body {
