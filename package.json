@@ -7,7 +7,7 @@
     "api": "tsc && node ./dist/API",
     "web-dev": "webpack --mode development",
     "web-build": "webpack --mode production",
-    "web": "npm run web-build && cp ./dist/bundle.js ./webui/bundle.js && npm run api",
+    "web": "npm run web-build && npm run api",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "jsonrepair": "^3.8.0"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.4",
     "webpack": "^5.94.0",
