@@ -8,6 +8,7 @@
     "web-dev": "webpack --mode development",
     "web-build": "webpack --mode production",
     "web": "npm run web-build && npm run api",
+    "update": "tsc && node ./dist/CLI update && npm run web-build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

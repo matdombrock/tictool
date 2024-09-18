@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as ChildProcess from "child_process";
 
-const { Command } = require('commander');
+import { Command } from 'commander';
 
 import Analytics from "./Analytics";
 import Update from "./Update";
@@ -31,7 +31,7 @@ ___________.__     ___________           .__
         this.program
             .command('update')
             .description('Update the downloads and meta data')
-            .action((name: string) => {
+            .action(() => {
                 this.update();
             });
 
@@ -147,7 +147,7 @@ ___________.__     ___________           .__
     }
     private async update(): Promise<void> {
         const mn = new Update();
-        // await mn.getListings();
+        await mn.getListings();
         await mn.getCarts();
         mn.generateMeta();
         const ana = Analytics.analyze(this.meta);
