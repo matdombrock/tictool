@@ -21,6 +21,7 @@ class Util {
         try {
             const repaired = jsonrepair(json)
             return repaired;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
             throw new Error('Cant repair JSON!');            
         }

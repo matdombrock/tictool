@@ -50552,7 +50552,8 @@ const searchBtn = document.getElementById('searchBtn') as HTMLButtonElement;
 const checkLimit = document.getElementById('checkLimit') as HTMLInputElement;
 const checkJSON = document.getElementById('checkJSON') as HTMLInputElement;
 
-function onInput(e: Event): void {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function onInput(_e: Event): void {
     // const target = e.target as HTMLInputElement;
     search(queryElement.value, scriptElement.value, sectionElement.value);
 }
@@ -50566,24 +50567,25 @@ function onAbout(): void {
 }
 function onAnalytics(): void {
     resCountElement.innerHTML = '';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ana = Analytics.analyze(meta as any);
     let html = '<h3>Overall language usage:</h3>';
-    for (let [key, val] of Object.entries(ana.langs)) {
+    for (const [key, val] of Object.entries(ana.langs)) {
         html += `${key}: ${val} <br/>`;
     }
     html += '<h3>Carts by section:</h3>';
-    for (let [key, val] of Object.entries(ana.langs)) {
+    for (const [key, val] of Object.entries(ana.langs)) {
         html += `${key}: ${val} <br/>`;
     }
     html += '<h3>Languages by section:</h3>';
-    for (let [section, data] of Object.entries(ana.sectionLangs)) {
+    for (const [section, data] of Object.entries(ana.sectionLangs)) {
         html += `${section}:<br/>`;
-        for (let [key, val] of Object.entries(data)) {
+        for (const [key, val] of Object.entries(data)) {
             html += `-- ${key}: ${val} <br/>`; 
         }
     }
     html += '<h3>Authors by cart count:</h3>';
-    for (let [key, val] of Object.entries(ana.authors)) {
+    for (const [key, val] of Object.entries(ana.authors)) {
         html += `${key}: ${val} <br/>`;
     }
     // html += '<pre>' + JSON.stringify(ana, null, 2) + '</pre>';
@@ -50600,6 +50602,7 @@ function onBookmarks(): void {
 
 function search(query: string, script: string, section: string) {
     const opts: SearchOptions = { script: script, section: section };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const res: SearchResult[] = Search.search(meta as any, query, opts);
     const limited = (checkLimit.checked && res.length > 64);
     if (limited) res.length = 64;
@@ -50609,7 +50612,7 @@ function search(query: string, script: string, section: string) {
         let html = '';
         if (checkJSON.checked) {
             html += '<pre>';
-            for (let item of res) {
+            for (const item of res) {
                 html += JSON.stringify(item.cartMeta, null, 2);
                 html += '\n';
             }
@@ -50617,7 +50620,7 @@ function search(query: string, script: string, section: string) {
             resElement.innerHTML = html;
             return;
         }
-        for (let item of res) {
+        for (const item of res) {
             const metaId = `metaBtn-${item.cartMeta.id}`;
             const markId = `markBtn-${item.cartMeta.id}`;
             const desc = item.cartMeta.desc !== 'unknown' ? item.cartMeta.desc : 'No description provided...';
@@ -50645,7 +50648,7 @@ function search(query: string, script: string, section: string) {
         // html += '<pre>' + JSON.stringify(res, null, 2) + '</pre>'
         resElement.innerHTML = html;
         // Must register listeners after content is rendered
-        for (let item of res) {
+        for (const item of res) {
             const metaId = `metaBtn-${item.cartMeta.id}`;
             const markId = `markBtn-${item.cartMeta.id}`;
             document.getElementById(metaId)?.addEventListener('click', ()=>{

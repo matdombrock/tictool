@@ -1,4 +1,4 @@
-import fs, { mkdir } from 'fs';
+import fs from 'fs';
 
 import Util from './Util';
 import cfg from './cfg';
@@ -61,7 +61,7 @@ class Update {
     }
     async getListings(): Promise<void> {
         Util.mkdir(cfg.listingDir);
-        for (let section of cfg.listingSections) {
+        for (const section of cfg.listingSections) {
             const url = cfg.apiUrl + 'json?fn=dir&path=Play/' + section;
             const outputPath = cfg.listingDir + section + '.json';
             await Util.downloadFile(url, outputPath, false, true);
@@ -69,10 +69,10 @@ class Update {
         fs.writeFileSync(cfg.listingDir + '/_timestamp', Date.now().toString());
     }
     async getCarts(): Promise<void> {
-        for (let section of cfg.listingSections as Section[]) {
+        for (const section of cfg.listingSections as Section[]) {
             const listing = this.readListing(section);
             let i = 0;
-            for (let cart of listing as CartDataRaw[]){
+            for (const cart of listing as CartDataRaw[]){
                 i++;
                 console.log('--- ', i, '/', listing.length, section);
                 const cd: CartData = {
@@ -111,15 +111,15 @@ class Update {
     }
     generateMeta(): void {
         console.log('Generating meta...');
-        let meta: CartMeta[] = [];
-        for (let section of cfg.listingSections) {
+        const meta: CartMeta[] = [];
+        for (const section of cfg.listingSections) {
             const sectionPath = cfg.dlDir + section;
             console.log(sectionPath);
             if (!fs.existsSync(sectionPath)) {
                 throw new Error('Cant find downloads for ' + section);   
             }
             const files = fs.readdirSync(sectionPath);
-            for (let file of files) {
+            for (const file of files) {
                 if (file === '.local') continue;
                 console.log();
                 console.log(file);
@@ -131,8 +131,8 @@ class Update {
                     filename: 'null'
                 };
                 const id = file.split('_')[0];
-                const filename = file.split('_')[1];
-                for (let record of Object.values(this.records)) {
+                //const filename = file.split('_')[1];
+                for (const record of Object.values(this.records)) {
                     if (record.cartData.id.toString()  === id) rec = record.cartData;
                 }
                 if (rec === null) {
@@ -142,7 +142,7 @@ class Update {
                 const stats = fs.statSync(sectionPath + '/' + file);
                 // Split the file contents into an array of lines
                 const lines = contents.split('\n');
-                let cartMeta: CartMeta = {
+                const cartMeta: CartMeta = {
                     name: rec.name,
                     author: 'unknown',
                     script: 'lua',// lua is the default script

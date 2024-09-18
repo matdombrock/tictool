@@ -13,7 +13,7 @@ export type Analysis = {
     totalSize: number;
 }
 class Analytics {
-    private static sortObjectByValue(obj: Object) {
+    private static sortObjectByValue(obj: object) {
         // Convert object to array of [key, value] pairs
         const entries = Object.entries(obj);
         // Sort the array based on values (second element of each pair)
@@ -22,7 +22,7 @@ class Analytics {
         return Object.fromEntries(entries);
     }
     static analyze(meta: CartMeta[]): Analysis {
-        let ana: Analysis = {
+        const ana: Analysis = {
             langs: {},
             authors: {},
             sections: {},
@@ -30,7 +30,7 @@ class Analytics {
             cartCount: 0,
             totalSize: 0
         };
-        for (let item of meta) {
+        for (const item of meta) {
             if (ana.langs[item.script]) ana.langs[item.script]++;
             else ana.langs[item.script] = 1;
             if (ana.authors[item.author]) ana.authors[item.author]++;
@@ -48,7 +48,7 @@ class Analytics {
         ana.langs = this.sortObjectByValue(ana.langs);
         ana.authors = this.sortObjectByValue(ana.authors);
         ana.sections = this.sortObjectByValue(ana.authors);
-        for (let section of cfg.listingSections) {
+        for (const section of cfg.listingSections) {
             ana.sectionLangs[section] = this.sortObjectByValue(ana.sectionLangs[section]);
         }
 
@@ -56,7 +56,7 @@ class Analytics {
     }
     static maxID(meta: CartMeta[]): number {
         let res = 0;
-        for (let item of meta) {
+        for (const item of meta) {
             res = item.id > res ? item.id : res;
         }
         return res;
