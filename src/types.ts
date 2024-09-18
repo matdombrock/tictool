@@ -20,18 +20,18 @@ export type CartMeta = {
     author: string;
     script: string;
     desc: string;
-    section: Section;
+    section: string;
     hash: string;
     id: number;
     filename: string;
     size: number;
-    mtime: Date;
-    ctime: Date;
+    mtime: string;
+    ctime: string;
 };
 
 export type DLRecord = {
     [key: number]: {
         cartData: CartData;
-        ts: Number;
+        ts: number;
     }
 };

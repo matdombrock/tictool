@@ -152,8 +152,8 @@ class Update {
                     hash: rec.hash,
                     filename: rec.filename,
                     size: stats.size,
-                    mtime: stats.mtime,
-                    ctime: stats.ctime
+                    mtime: stats.mtime.toString(),
+                    ctime: stats.ctime.toString()
                 };
                 for (let line of lines) {
                     line = line.toLowerCase();
